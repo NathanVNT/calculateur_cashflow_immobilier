@@ -1,18 +1,15 @@
 'use client';
 import React, { useState } from "react";
-import {
-    Container,
-    Typography,
-    TextField,
-    Button,
-    Paper,
-    Box,
-    Grid,
-    Divider,
-    useMediaQuery,
-    useTheme,
-    InputAdornment,
-} from "@mui/material";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Divider from "@mui/material/Divider";
+import InputAdornment from "@mui/material/InputAdornment";
+import { useTheme } from "@mui/material/styles";
 
 function calculateMonthlyLoanPayment(
     principal: number,
