@@ -6,7 +6,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid2";
+import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useTheme } from "@mui/material/styles";
@@ -24,6 +24,7 @@ function calculateMonthlyLoanPayment(
         (1 - Math.pow(1 + monthlyRate, -n))
     );
 }
+
 export default function RentabilityCalculator() {
     const [price, setPrice] = useState("");
     const [downPayment, setDownPayment] = useState("");
@@ -158,11 +159,11 @@ export default function RentabilityCalculator() {
                                     aria: "Montant du prêt en euros"
                                 },
                                 {
-                                    label: "Taux d’intérêt annuel",
+                                    label: "Taux d'intérêt annuel",
                                     value: interestRate,
                                     setter: setInterestRate,
                                     adornment: "%",
-                                    aria: "Taux d’intérêt annuel en pourcentage",
+                                    aria: "Taux d'intérêt annuel en pourcentage",
                                     step: 0.01
                                 },
                                 {
