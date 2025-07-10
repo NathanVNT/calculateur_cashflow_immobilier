@@ -6,7 +6,6 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useTheme } from "@mui/material/styles";
@@ -25,7 +24,7 @@ function calculateMonthlyLoanPayment(
     );
 }
 
-export default function RentabilityCalculator() {
+export function RentabilityCalculator() {
     const [price, setPrice] = useState("");
     const [downPayment, setDownPayment] = useState("");
     const [loanAmount, setLoanAmount] = useState("");
@@ -93,11 +92,11 @@ export default function RentabilityCalculator() {
                 background: "linear-gradient(135deg, #e0e7ff 0%, #f0fdfa 100%)",
             }}
         >
-            <Container maxWidth="sm" sx={{ flex: 1, display: "flex", alignItems: "center" }}>
+            <Container maxWidth="sm" sx={{flex: 1, display: "flex", alignItems: "center"}}>
                 <Paper
                     elevation={8}
                     sx={{
-                        p: { xs: 2, sm: 4 },
+                        p: {xs: 2, sm: 4},
                         borderRadius: 4,
                         background: "rgba(255,255,255,0.85)",
                         boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
@@ -112,7 +111,7 @@ export default function RentabilityCalculator() {
                         gutterBottom
                         align="center"
                         color="primary"
-                        sx={{ fontWeight: 700, letterSpacing: 1 }}
+                        sx={{fontWeight: 700, letterSpacing: 1}}
                     >
                         Calculateur de Rentabilité
                     </Typography>
@@ -121,21 +120,28 @@ export default function RentabilityCalculator() {
                         variant="subtitle1"
                         align="center"
                         color="text.secondary"
-                        sx={{ mb: 2 }}
+                        sx={{mb: 2}}
                     >
                         Renseignez les informations pour estimer la rentabilité de votre investissement.
                     </Typography>
 
-                    <Divider sx={{ mb: 3 }} />
+                    <Divider sx={{mb: 3}}/>
 
                     <Box
                         component="form"
                         noValidate
                         autoComplete="off"
                         onSubmit={handleCalculate}
-                        sx={{ width: "100%" }}
+                        sx={{width: "100%"}}
                     >
-                        <Grid container spacing={2} justifyContent="center">
+                        <Box
+                            sx={{
+                                display: "flex",
+                                flexWrap: "wrap",
+                                gap: 2,
+                                justifyContent: "center"
+                            }}
+                        >
                             {[
                                 {
                                     label: "Prix du bien",
@@ -195,7 +201,13 @@ export default function RentabilityCalculator() {
                                     aria: "Charges annuelles en euros"
                                 }
                             ].map((field, idx) => (
-                                <Grid item xs={12} sm={6} key={idx}>
+                                <Box
+                                    key={idx}
+                                    sx={{
+                                        width: { xs: "100%", sm: "calc(50% - 8px)" },
+                                        minWidth: "200px"
+                                    }}
+                                >
                                     <TextField
                                         label={field.label}
                                         value={field.value}
@@ -209,34 +221,36 @@ export default function RentabilityCalculator() {
                                         fullWidth
                                         required
                                         InputProps={{
-                                            endAdornment: <InputAdornment position="end">{field.adornment}</InputAdornment>,
+                                            endAdornment: <InputAdornment
+                                                position="end">{field.adornment}</InputAdornment>,
                                         }}
                                         variant="outlined"
                                         margin="dense"
-                                        sx={{ textAlign: "center" }}
+                                        sx={{textAlign: "center"}}
                                     />
-                                </Grid>
+                                </Box>
                             ))}
-                            <Grid item xs={12} sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-                                <Button
-                                    type="submit"
-                                    variant="contained"
-                                    size="large"
-                                    color="primary"
-                                    sx={{
-                                        px: 6,
-                                        py: 1.5,
-                                        fontWeight: 600,
-                                        fontSize: "1.1rem",
-                                        borderRadius: 2,
-                                        boxShadow: "0 2px 8px rgba(33,150,243,0.08)",
-                                    }}
-                                    aria-label="Calculer la rentabilité"
-                                >
-                                    Calculer
-                                </Button>
-                            </Grid>
-                        </Grid>
+                        </Box>
+
+                        <Box sx={{display: "flex", justifyContent: "center", mt: 3}}>
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                size="large"
+                                color="primary"
+                                sx={{
+                                    px: 6,
+                                    py: 1.5,
+                                    fontWeight: 600,
+                                    fontSize: "1.1rem",
+                                    borderRadius: 2,
+                                    boxShadow: "0 2px 8px rgba(33,150,243,0.08)",
+                                }}
+                                aria-label="Calculer la rentabilité"
+                            >
+                                Calculer
+                            </Button>
+                        </Box>
                     </Box>
 
                     <Box
@@ -244,14 +258,14 @@ export default function RentabilityCalculator() {
                         textAlign="center"
                         aria-live="polite"
                         aria-atomic="true"
-                        sx={{ minHeight: 120 }}
+                        sx={{minHeight: 120}}
                     >
                         {cashflow !== null && monthlyPayment !== null && (
                             <>
                                 <Typography variant="h6" fontWeight="bold" gutterBottom>
                                     Résultats
                                 </Typography>
-                                <Typography variant="body1" sx={{ mb: 1 }}>
+                                <Typography variant="body1" sx={{mb: 1}}>
                                     Mensualité prêt + assurance :{" "}
                                     <strong>{monthlyPayment} €</strong>
                                 </Typography>
@@ -267,7 +281,7 @@ export default function RentabilityCalculator() {
                                     variant="body2"
                                     color="text.secondary"
                                     mt={1}
-                                    sx={{ fontStyle: "italic" }}
+                                    sx={{fontStyle: "italic"}}
                                 >
                                     {parseFloat(cashflow) >= 0
                                         ? "Votre investissement génère un cashflow positif."
