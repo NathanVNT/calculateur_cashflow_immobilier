@@ -6,7 +6,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+import { Grid } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useTheme } from "@mui/material/styles";
@@ -195,7 +195,7 @@ export default function RentabilityCalculator() {
                                     aria: "Charges annuelles en euros"
                                 }
                             ].map((field, idx) => (
-                                <Grid item xs={12} sm={6} key={idx}>
+                                <Grid key={idx} xs={12} sm={6}>
                                     <TextField
                                         label={field.label}
                                         value={field.value}
@@ -217,7 +217,7 @@ export default function RentabilityCalculator() {
                                     />
                                 </Grid>
                             ))}
-                            <Grid item xs={12} sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+                            <Grid xs={12} sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
                                 <Button
                                     type="submit"
                                     variant="contained"
