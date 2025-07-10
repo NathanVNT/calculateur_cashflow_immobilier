@@ -24,7 +24,7 @@ function calculateMonthlyLoanPayment(
     );
 }
 
-export function RentabilityCalculator() {
+export default function RentabilityCalculator() {
     const [price, setPrice] = useState("");
     const [downPayment, setDownPayment] = useState("");
     const [loanAmount, setLoanAmount] = useState("");
