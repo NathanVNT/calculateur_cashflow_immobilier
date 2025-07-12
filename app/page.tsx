@@ -303,7 +303,7 @@ export default function RentabilityCalculator() {
                     mt: 4,
                 }}
             >
-                &copy; {new Date().getFullYear()} - Calculateur par Nathan
+                &copy; {new Date().getFullYear()} - Made with ❤️ by{" Nathan "}
             </Box>
         </Box>
     );
