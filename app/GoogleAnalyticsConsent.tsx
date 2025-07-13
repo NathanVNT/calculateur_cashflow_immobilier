@@ -35,7 +35,7 @@ export default function GoogleAnalyticsConsent() {
     }, []);
 
     const initializeGoogleAnalytics = () => {
-        const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID;
+        const GA_MEASUREMENT_ID = "G-4LXLWH9RNH";
 
         if (!GA_MEASUREMENT_ID) {
             console.warn('GA_MEASUREMENT_ID non défini');
